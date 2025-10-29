@@ -1,0 +1,49 @@
+# (lim inn YAML fra punkt 1 her)
+name: Hardware CI (ERC/DRC)
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  erc-drc:
+    runs-on: ubuntu-latest
+    
+    container: ghcr.io/inti-cmnb/kicad9_auto:latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: KiCad version
+        run: |
+          kicad-cli --version || true
+          kibot --version || true
+
+      - name: Run KiBot: ERC/DRC + fab-artefakter
+        working-directory: hardware/txe8116-module
+        run: |
+          kibot -b kicad/txe8116-module.kicad_pro -c .kibot.yaml --out-dir checks
+
+      - name: Fail on ERC/DRC errors
+        working-directory: hardware/txe8116-module/checks
+        run: |
+          set -e
+          # Sjekk både ERC og DRC rapporter hvis de finnes
+          if ls *.rpt >/dev/null 2>&1; then
+            if grep -E "ERROR|Error|VIOLATION" -R . ; then
+              echo "ERC/DRC errors found"
+              exit 1
+            fi
+          fi
+
+      - name: Upload reports & outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: kicad-checks-and-fab
+          path: |
+            hardware/txe8116-module/checks/**
+            hardware/txe8116-module/fabrication/**
+            hardware/txe8116-module/docs/pdf/**
+          if-no-files-found: ignore

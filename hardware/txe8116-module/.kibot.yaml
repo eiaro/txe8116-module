@@ -1,25 +1,51 @@
-# Minimal KiBot config (tilpass senere)
 kibot:
   version: 1
 
+global:
+  output: checks
+
 outputs:
+  # ERC/DRC til rapportfiler
+  - name: erc
+    type: erc
+    dir: checks
+    options:
+      # tillat warnings, men errors feiler i workflow-steget etterpå
+      severity: warning
+
+  - name: drc
+    type: drc
+    dir: checks
+    options:
+      severity: warning
+
+  # Fabrikasjon – nyttig som artefakter i PR
   - name: gerbers
     type: gerber
     dir: fabrication/gerbers
+
   - name: drill
     type: excellon
     dir: fabrication/drill
+
   - name: bom_csv
     type: bom
-    options: { format: CSV, ref_sep: ", " }
     dir: fabrication/bom
+    options:
+      format: CSV
+      ref_sep: ", "
+
   - name: pos_csv
     type: position
-    options: { format: CSV }
     dir: fabrication/pos
+    options:
+      format: CSV
+
+  # Lesbare PDF’er
   - name: pdf_sch
     type: pdf_sch_print
     dir: docs/pdf
+
   - name: pdf_pcb
     type: pdf_pcb_print
     dir: docs/pdf
