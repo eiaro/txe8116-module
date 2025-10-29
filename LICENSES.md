@@ -1,6 +1,6 @@
 # Licenses
 
-This repository follows an Adafruit-style dual license:
+This repository applies an dual license:
 
 - **Hardware (schematics/PCB in `hardware/`):** Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)
 - **Firmware / Software (in `firmware/`):** MIT License
