@@ -1,25 +1,112 @@
-# Minimal KiBot config (tilpass senere)
 kibot:
   version: 1
 
+global:
+  output: checks
+
+preflight:
+  check_zone_fills: true
+  erc: false
+  drc: false
+
+  filters:
+
+  set_text_variables:
+    - name: 'git_hash'
+      command: 'git log -1 --format="%h" $KIBOT_PCB_NAME'
+      before: 'Git:'
+
+    - name: 'date'
+      command: 'date --iso-8601=minutes'
+
 outputs:
+  - name: 'bom_xlsx'
+    comment: "Spreadsheet for the Bill of Materials"
+    type: bom
+    dir: fabrication/bom
+    options: &bom_options
+      xlsx:
+        datasheet_as_link: MFP
+        title: 'KiBot variants example'
+        max_col_width: 40
+        highlight_empty: false
+      columns:
+        - Row
+        - References
+        - Quantity Per PCB
+        - field: Value
+          join: ['voltage', 'current', 'power', 'tolerance']
+        - Footprint
+      normalize_values: true
+
+  - name: 'bom_html'
+    comment: "HTML for the Bill of Materials"
+    type: bom
+    dir: fabrication/bom
+    options:
+      <<: *bom_options
+      format: HTML
+      html:
+        datasheet_as_link: MFP
+        title: 'KiBot variants example'
+        highlight_empty: false
+
+  - name: ibom
+    comment: 'Prototype mounting guide'
+    type: ibom
+    dir: fabrication/bom
+    options:
+      layer_view: F
+
   - name: gerbers
+    comment: Gerbers
     type: gerber
     dir: fabrication/gerbers
+    layers:
+      - copper
+      - Edge.Cuts
+      - F.SilkS
+      - B.SilkS
+      - F.Mask
+      - B.Mask
+      - F.Paste
+      - F.Adhes
+      - F.Fab
+      - F.CrtYd
+      - Dwgs.User
+
   - name: drill
+    comment: Drill files
     type: excellon
     dir: fabrication/drill
-  - name: bom_csv
-    type: bom
-    options: { format: CSV, ref_sep: ", " }
-    dir: fabrication/bom
-  - name: pos_csv
+    options:
+      map:
+        type: pdf
+      pth_and_npth_single_file: false
+
+  - name: position
+    comment: Pick & Place
     type: position
-    options: { format: CSV }
     dir: fabrication/pos
-  - name: pdf_sch
+    options:
+      separate_files_for_front_and_back: false
+
+
+  - name: 'print_sch'
+    comment: "Schematic PDF"
     type: pdf_sch_print
     dir: docs/pdf
-  - name: pdf_pcb
-    type: pdf_pcb_print
+    options:
+      # Append the variant to the title
+      title: "+ (%V variant)"
+
+  - name: print_pdf
+    comment: "PDF for the PCB"
+    type: pcb_print
     dir: docs/pdf
+    
+  - name: 3D
+    comment: "STEP 3D model"
+    type: export_3d
+    dir: docs/3d
+  
