@@ -27,7 +27,7 @@ RUN add-apt-repository ppa:kicad/kicad-9.0-releases && \
     rm -rf /var/lib/apt/lists/*
 
 # Install KiBot and necessary Python packages
-RUN pip3 install --no-cache-dir \
+RUN pip3 install --no-cache-dir --no-compile \
     kibot \
     --break-system-packages
 
