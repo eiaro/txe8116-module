@@ -5,13 +5,13 @@ LABEL org.opencontainers.image.source="https://github.com/eiaro/txe8116-module"
 LABEL org.opencontainers.image.description="KiBot with KiCad 9.0.5 for txe8116-module"
 LABEL org.opencontainers.image.licenses="MIT"
 
-# Avoid interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Update KiCad to 9.0.5
+# Add KiCad official Debian repository for 9.x
 RUN apt-get update && \
-    apt-get install -y software-properties-common && \
-    add-apt-repository ppa:kicad/kicad-9.0-releases && \
+    apt-get install -y wget gnupg && \
+    wget -qO - https://repos.kicad.org/kicad-developers.gpg | apt-key add - && \
+    echo "deb https://repos.kicad.org/debian bookworm main" > /etc/apt/sources.list.d/kicad.list && \
     apt-get update && \
     apt-get upgrade -y kicad && \
     apt-get clean && \
