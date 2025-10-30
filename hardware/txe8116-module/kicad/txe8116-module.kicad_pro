@@ -639,5 +639,8 @@
       "Root"
     ]
   ],
-  "text_variables": {}
+  "text_variables": {
+    "date": "2025-10-30T13:36+01:00",
+    "git_hash": "Git:e1cc92f"
+  }
 }
