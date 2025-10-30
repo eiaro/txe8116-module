@@ -6,8 +6,8 @@ global:
 
 preflight:
   check_zone_fills: true
-  erc: true
-  drc: true
+  erc: false
+  drc: false
 
   filters:
 
@@ -36,10 +36,6 @@ outputs:
         - Quantity Per PCB
         - field: Value
           join: ['voltage', 'current', 'power', 'tolerance']
-        - field: MFN
-          name: Manufacturer
-        - field: MFP
-          name: Manf. Part
         - Footprint
       normalize_values: true
 

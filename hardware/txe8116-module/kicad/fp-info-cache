@@ -1,4 +1,4 @@
-26893747687684084
+26897354856512407
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -106953,6 +106953,13 @@ Texas TSSOP SO
 20
 20
 temp
+Texas_DGS0024A_TSSOP-24_3x6.1mm_P0.5mm
+Texas DGS0024A TSSOP, 24 Pin (https://www.ti.com/lit/ml/mpss138/mpss138.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
+Texas TSSOP SO
+0
+24
+24
+temp
 Texas_DKD0036A_HSSOP-36_11x15.9mm_P0.65mm_TopEP5.85x12.65mm
 Texas DKD0036A HSSOP, 36 Pin (https://www.ti.com/lit/ml/pptd185d/pptd185d.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
 Texas HSSOP SO PowerPAD
@@ -107064,3 +107071,10 @@ VSSOP SO
 0
 10
 10
+txe8116
+Texas_DGS0024A_TSSOP-24_3x6.1mm_P0.5mm
+Texas DGS0024A TSSOP, 24 Pin (https://www.ti.com/lit/ml/mpss138/mpss138.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py
+Texas TSSOP SO
+0
+24
+24
