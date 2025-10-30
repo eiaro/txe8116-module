@@ -1,4 +1,3 @@
-# (lim inn YAML fra punkt 1 her)
 name: Hardware CI (ERC/DRC)
 
 on:
@@ -9,8 +8,11 @@ on:
 jobs:
   erc-drc:
     runs-on: ubuntu-latest
-    
-    container: ghcr.io/inti-cmnb/kicad9_auto:latest
+    container:
+      image: ghcr.io/${{ github.repository }}/kibot:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout
