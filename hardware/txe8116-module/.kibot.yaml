@@ -107,18 +107,8 @@ outputs:
     
   - name: 3D
     comment: "STEP 3D model"
-    type: step
+    type: export_3d
     dir: docs/3d
-
-  - name: 3D_top_view
-    comment: "3D render from top"
-    type: render_3d
-    dir: docs/3d
-    options:
-      zoom: 4
-      rotate_x: 3
-      rotate_z: 3
-      ray_tracing: true
 
   - name: 3D_top_view_HQ
     comment: "3D render from top (High Quality)"
