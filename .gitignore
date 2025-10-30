@@ -8,6 +8,8 @@ Thumbs.db
 
 # KiCad 7/8
 *.bak
+*-bak
+*.lck
 *.kicad_prl
 *-backups/
 *autosave*

@@ -27,7 +27,7 @@ jobs:
       - name: 'Run KiBot: ERC/DRC + fab-artefakter'
         working-directory: hardware/txe8116-module
         run: |
-          kibot -b kicad/txe8116-module.kicad_pro -c .kibot.yaml --out-dir checks
+          kibot -b kicad/txe8116-module.kicad_pcb -e kicad/txe8116-module.kicad_sch -c .kibot.yaml --out-dir checks
 
       - name: 'Fail on ERC/DRC errors'
         working-directory: hardware/txe8116-module/checks
