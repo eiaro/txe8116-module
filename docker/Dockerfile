@@ -38,13 +38,8 @@ RUN kicad-cli version && \
 # Set working directory
 WORKDIR /workspace
 
-# Create non-root user (handle if UID 1000 already exists)
-RUN groupadd -g 1000 kicad 2>/dev/null || true && \
-    useradd -m -u 1000 -g 1000 -s /bin/bash kicad 2>/dev/null || true && \
-    mkdir -p /workspace && \
-    chown -R 1000:1000 /workspace
-
-USER kicad
+# Note: Running as root is fine for CI/CD containers
+# The container isolation provides sufficient security
 
 ENTRYPOINT ["kibot"]
 CMD ["--help"]
