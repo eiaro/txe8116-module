@@ -8,14 +8,13 @@ LABEL org.opencontainers.image.licenses="MIT"
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Add KiCad official Debian repository for 9.x
-RUN apt-get update && \
-    apt-get install -y wget gnupg && \
-    wget -qO - https://repos.kicad.org/kicad-developers.gpg | apt-key add - && \
-    echo "deb https://repos.kicad.org/debian bookworm main" > /etc/apt/sources.list.d/kicad.list && \
-    apt-get update && \
-    apt-get upgrade -y kicad && \
+RUN apt-get update && \    
+    apt-get upgrade -y kicad kicad-footprints kicad-symbols kicad-templates && \
+    apt-get upgrade -y && \
+    apt-get -y autoremove && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* /var/cache/debconf/templates.dat-old /var/lib/dpkg/status-old && \
+	rm -rf /usr/share/icons/Adwaita/ /*.deb
 
 # Verify versions
 RUN kicad-cli version && \
