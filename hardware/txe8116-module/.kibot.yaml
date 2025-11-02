@@ -96,7 +96,6 @@ outputs:
     comment: "Schematic PDF"
     type: pdf_sch_print
     dir: docs/pdf
-    options:
       
   - name: print_pdf
     comment: "PDF for the PCB"
