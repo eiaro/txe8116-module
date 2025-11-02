@@ -58,24 +58,7 @@
           "width": 0.0
         }
       ],
-      "drc_exclusions": [
-        [
-          "invalid_outline|140970000|72390000|3b591a76-a836-4444-897d-0ae3ebd9c244|00000000-0000-0000-0000-000000000000",
-          "For Aisler"
-        ],
-        [
-          "invalid_outline|140970000|92710000|66663e15-37ce-4e6c-a382-c4174ef2eba0|00000000-0000-0000-0000-000000000000",
-          "For Aisler"
-        ],
-        [
-          "invalid_outline|158750000|72390000|32faa4f0-6db6-48b1-be49-1e408f1e4c4b|00000000-0000-0000-0000-000000000000",
-          "For Aisler"
-        ],
-        [
-          "invalid_outline|158750000|92710000|b2a80a24-0ae3-4e9e-a3a3-c9eb1da6a9cf|00000000-0000-0000-0000-000000000000",
-          "For Aisler"
-        ]
-      ],
+      "drc_exclusions": [],
       "meta": {
         "version": 2
       },
