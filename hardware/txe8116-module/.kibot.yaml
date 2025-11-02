@@ -97,9 +97,7 @@ outputs:
     type: pdf_sch_print
     dir: docs/pdf
     options:
-      # Append the variant to the title
-      title: "+ (%V variant)"
-
+      
   - name: print_pdf
     comment: "PDF for the PCB"
     type: pcb_print
@@ -107,8 +105,6 @@ outputs:
     options:
       force_edge_cuts: true
       keep_temporal_files: true
-      # Append the variant to the title
-      title: "+ (%V variant)"
       # This is the worksheet we selected in the project, no need to specify it again
       # sheet_reference_layout: pcb_print.kicad_wks
       scaling: 2.0
