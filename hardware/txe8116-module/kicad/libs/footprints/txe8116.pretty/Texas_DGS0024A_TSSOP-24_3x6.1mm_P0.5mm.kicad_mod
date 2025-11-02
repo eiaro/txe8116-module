@@ -396,17 +396,6 @@
 		(uuid "9d1085e0-1c79-4c22-9c5b-b1af98641a0b")
 	)
 	(embedded_fonts no)
-	(model "${KICAD9_3DMODEL_DIR}/Package_SO.3dshapes/Texas_DGS0024A_TSSOP-24_3x6.1mm_P0.5mm.step"
-		(offset
-			(xyz 0 0 0)
-		)
-		(scale
-			(xyz 1 1 1)
-		)
-		(rotate
-			(xyz 0 0 0)
-		)
-	)
 	(model "${KIPRJMOD}/libs/3dmodels/DGS0024A.stp"
 		(offset
 			(xyz 0 0 0)
