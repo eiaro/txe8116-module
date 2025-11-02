@@ -2,12 +2,12 @@ kibot:
   version: 1
 
 global:
-  output: checks
+  output: '%f_rev_%r-%i.%x'
 
 preflight:
   check_zone_fills: true
-  erc: false
-  drc: false
+  erc: true
+  drc: true
 
   filters:
 
@@ -96,14 +96,35 @@ outputs:
     comment: "Schematic PDF"
     type: pdf_sch_print
     dir: docs/pdf
-    options:
-      # Append the variant to the title
-      title: "+ (%V variant)"
-
+      
   - name: print_pdf
     comment: "PDF for the PCB"
     type: pcb_print
     dir: docs/pdf
+    options:
+      force_edge_cuts: true
+      keep_temporal_files: true
+      # This is the worksheet we selected in the project, no need to specify it again
+      # sheet_reference_layout: pcb_print.kicad_wks
+      scaling: 2.0
+      pages:
+        - layers: [ F.Paste, F.Adhes, Dwgs.User, F.Fab ]
+          sheet: 'Fabrication layers'
+        - layers:
+            - layer: F.Cu
+            - layer: F.Mask
+              color: '#14332440'
+            - layer: F.SilkS
+            - layer: Dwgs.User
+          sheet: 'Top layer'        
+        - layers:
+            - layer: B.Cu
+            - layer: B.Mask
+              color: '#14332440'
+            - layer: B.SilkS
+            - layer: Dwgs.User
+          sheet: 'Bottom layer'
+          mirror: true    
     
   - name: 3D
     comment: "STEP 3D model"
