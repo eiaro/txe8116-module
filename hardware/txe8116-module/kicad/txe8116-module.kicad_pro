@@ -510,11 +510,7 @@
       "version": 4
     },
     "net_colors": null,
-    "netclass_assignments": {
-      "VCC": [
-        "ESD_CRITICAL"
-      ]
-    },
+    "netclass_assignments": null,
     "netclass_patterns": [
       {
         "netclass": "Default",
@@ -619,14 +615,20 @@
         },
         {
           "group_by": false,
-          "label": "MFN",
-          "name": "MFN",
-          "show": false
+          "label": "MFG",
+          "name": "MFG",
+          "show": true
         },
         {
           "group_by": false,
           "label": "MPN",
           "name": "MPN",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "OC_LCSC",
+          "name": "OC_LCSC",
           "show": false
         }
       ],
