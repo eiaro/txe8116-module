@@ -52,13 +52,13 @@ jobs:
           if-no-files-found: ignore
 
       - name: Copy generated files to tracked locations
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: |
           cp -r hardware/txe8116-module/checks/docs/. hardware/txe8116-module/docs/
           cp -r hardware/txe8116-module/checks/fabrication/. hardware/txe8116-module/fabrication/
 
       - name: Create PR with generated docs and fabrication files
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.DOCS_TOKEN }}
