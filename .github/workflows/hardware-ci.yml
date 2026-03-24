@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.DOCS_TOKEN }}
 
       - name: KiCad version
         run: |
@@ -50,3 +52,15 @@ jobs:
             hardware/txe8116-module/fabrication/**
             hardware/txe8116-module/docs/pdf/**
           if-no-files-found: ignore
+
+      - name: Commit generated docs and fabrication files
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          cp -r hardware/txe8116-module/checks/docs hardware/txe8116-module/
+          cp -r hardware/txe8116-module/checks/fabrication hardware/txe8116-module/
+          git add hardware/txe8116-module/docs/
+          git add hardware/txe8116-module/fabrication/
+          git diff --cached --quiet || git commit -m "chore: update generated docs and fabrication files [skip ci]"
+          git push
