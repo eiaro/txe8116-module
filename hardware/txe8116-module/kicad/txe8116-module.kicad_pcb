@@ -146,8 +146,6 @@
 			(outputdirectory "")
 		)
 	)
-	(property "date" "2025-10-30T13:36+01:00")
-	(property "git_hash" "Git:e1cc92f")
 	(net 0 "")
 	(net 1 "GND")
 	(net 2 "VCC")

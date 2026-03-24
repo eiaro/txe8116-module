@@ -1,0 +1,34 @@
+### Module positions - created on Tue 24 Mar 2026 19:54:51  ###
+### Printed by KiBot
+## Unit = mm, Angle = deg.
+## Side : both
+# Ref   Val            Package                                  PosX       PosY       Rot        Side
+C3      0u1            C_0603_1608Metric                        150.7750   -76.3750   90.0000    top 
+C4      4u7            C_0603_1608Metric                        149.2000   -76.3750   90.0000    top 
+D1      ESD9B5.0ST5G   D_SOD-923                                146.8250   -68.5750   0.0000     top 
+D2      ESD9B5.0ST5G   D_SOD-923                                146.8250   -71.1250   0.0000     top 
+D3      ESD9B5.0ST5G   D_SOD-923                                146.8250   -73.6750   0.0000     top 
+D4      ESD9B5.0ST5G   D_SOD-923                                146.8250   -76.2000   0.0000     top 
+D5      ESD9B5.0ST5G   D_SOD-923                                146.8250   -78.7500   0.0000     top 
+D6      ESD9B5.0ST5G   D_SOD-923                                146.8250   -81.2750   0.0000     top 
+D7      ESD9B5.0ST5G   D_SOD-923                                146.8250   -83.8250   0.0000     top 
+D8      ESD9B5.0ST5G   D_SOD-923                                146.8225   -86.3750   0.0000     top 
+D9      ESD9B5.0ST5G   D_SOD-923                                146.8250   -88.9000   0.0000     top 
+D10     ESD9B5.0ST5G   D_SOD-923                                146.8250   -91.4500   0.0000     top 
+D11     ESD9B5.0ST5G   D_SOD-923                                146.8250   -93.9750   0.0000     top 
+D12     ESD9B5.0ST5G   D_SOD-923                                146.8250   -96.5250   0.0000     top 
+D13     ESD9B5.0ST5G   D_SOD-923                                155.4500   -68.5750   180.0000   top 
+D14     ESD9B5.0ST5G   D_SOD-923                                155.4500   -71.1250   180.0000   top 
+D15     ESD9B5.0ST5G   D_SOD-923                                155.4500   -73.6500   180.0000   top 
+D16     ESD9B5.0ST5G   D_SOD-923                                155.4250   -76.2000   180.0000   top 
+D17     ESD9B5.0ST5G   D_SOD-923                                155.4500   -78.7500   180.0000   top 
+D18     ESD9B5.0ST5G   D_SOD-923                                155.4500   -81.2750   180.0000   top 
+D19     ESD9B5.0ST5G   D_SOD-923                                155.4525   -83.8250   180.0000   top 
+D20     ESD9B5.0ST5G   D_SOD-923                                155.4500   -86.3500   180.0000   top 
+D21     ESD9B5.0ST5G   D_SOD-923                                155.4500   -88.9000   180.0000   top 
+D22     ESD9B5.0ST5G   D_SOD-923                                155.4500   -91.4500   180.0000   top 
+D23     ESD9B5.0ST5G   D_SOD-923                                155.4500   -93.9750   180.0000   top 
+R1      10k            R_0603_1608Metric                        151.1100   -71.3100   -90.0000   top 
+R2      10k            R_0603_1608Metric                        149.5100   -71.3100   -90.0000   top 
+U1      TXE8116        Texas_DGS0024A_TSSOP-24_3x6.1mm_P0.5mm   151.3500   -81.2500   0.0000     top 
+## End
