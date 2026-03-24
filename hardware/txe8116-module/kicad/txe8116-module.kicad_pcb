@@ -8,6 +8,7 @@
 	)
 	(paper "A4")
 	(title_block
+		(rev "v1.0.0")
 		(comment 4 "AISLER Project ID: ZZLMEGJE")
 	)
 	(layers
