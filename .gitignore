@@ -21,3 +21,6 @@ build/
 production/
 fp-info-cache
 fabrication-toolkit-options.json
+
+# KiBot CI output (temporary working directory)
+hardware/txe8116-module/checks/
