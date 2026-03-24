@@ -18,8 +18,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.DOCS_TOKEN }}
 
       - name: KiCad version
         run: |
@@ -35,7 +33,6 @@ jobs:
         working-directory: hardware/txe8116-module/checks
         run: |
           set -e
-          # Sjekk både ERC og DRC rapporter hvis de finnes
           if ls *.rpt >/dev/null 2>&1; then
             if grep -E "ERROR|Error|VIOLATION" -R . ; then
               echo "ERC/DRC errors found"
@@ -53,14 +50,20 @@ jobs:
             hardware/txe8116-module/docs/pdf/**
           if-no-files-found: ignore
 
-      - name: Commit generated docs and fabrication files
+      - name: Copy generated files to tracked locations
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          cp -r hardware/txe8116-module/checks/docs hardware/txe8116-module/
-          cp -r hardware/txe8116-module/checks/fabrication hardware/txe8116-module/
-          git add hardware/txe8116-module/docs/
-          git add hardware/txe8116-module/fabrication/
-          git diff --cached --quiet || git commit -m "chore: update generated docs and fabrication files [skip ci]"
-          git push
+          cp -r hardware/txe8116-module/checks/docs/. hardware/txe8116-module/docs/
+          cp -r hardware/txe8116-module/checks/fabrication/. hardware/txe8116-module/fabrication/
+
+      - name: Create PR with generated docs and fabrication files
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.DOCS_TOKEN }}
+          commit-message: "chore: update generated docs and fabrication files"
+          branch: chore/update-generated-files
+          title: "chore: update generated docs and fabrication files"
+          body: "Automated update of generated documentation and fabrication files from KiBot."
+          labels: automated
+          delete-branch: true
